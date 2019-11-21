@@ -1,6 +1,8 @@
+.idea
 dist
 build
 __pycharm__
 *.egg-info
 *.pyc
+my_*
 

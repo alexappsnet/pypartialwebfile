@@ -1,6 +1,4 @@
 import logging
-import requests
-import os
 import unittest
 
 from partial_web_file import get_file_content_from_web_zip
