@@ -1,0 +1,6 @@
+dist
+build
+__pycharm__
+*.egg-info
+*.pyc
+
