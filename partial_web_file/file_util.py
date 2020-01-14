@@ -4,10 +4,11 @@ import requests
 
 log = logging.getLogger('partial_web_file')
 
+session = requests.Session()
 
 def get_partial_web_file(url, start_position, length):
     headers = {"Range": "bytes=%d-%d" % (start_position, start_position + length - 1)}
-    r = requests.get(url, headers=headers)
+    r = session.get(url, headers=headers)
     data = r.content
     data_len = len(data)
     if data_len != length:

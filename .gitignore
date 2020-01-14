@@ -1,7 +1,7 @@
 .idea
 dist
 build
-__pycharm__
+__pycache__
 *.egg-info
 *.pyc
 my_*
