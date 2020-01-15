@@ -1,4 +1,5 @@
 import argparse
+import os
 
 import partial_web_file.file_util
 import partial_web_file.zip_util
@@ -21,8 +22,16 @@ def _parse_args():
 
 def main():
     args = _parse_args()
-    content = get_file_content_from_web_zip(args.url, args.filename)
-    print(content.decode())
+
+    url = args.url
+    filename = args.filename
+    save_to = os.path.basename(filename)
+
+    print('Saving %s:%s to %s...' % (url, filename, save_to))
+    content = get_file_content_from_web_zip(url, filename)
+    with open(save_to, 'wb') as f:
+        f.write(content)
+    print('Done.')
 
 
 if __name__ == '__main__':
