@@ -30,8 +30,28 @@ url_to_huge_zip = 'http://remote.server.com/data/library-1.3.8.zip'
 file_to_unzip = 'common/keywords.txt'
 local_destination = 'keywords.txt'
 
-content = partial_web_file.get_file_content_from_web_zip(url, file)
+content = partial_web_file.get_file_content_from_web_zip(url_to_huge_zip, file_to_unzip)
 with open(local_destination, 'w') as fout:
   fout.write(content)
-print('Done. Check the', local_destination, 'file.')
+```
+
+If there are several files that need to be exctracted from the same remote zip file, do this:
+
+```python
+from partial_web_file import get_file_contents_from_web_zip
+
+
+def on_content(path, content):
+    if content is None:
+        print('Fail for', path)
+        return
+
+    local_destination = os.path.basename(path)
+    with open(local_destination, 'w') as fout:
+        fout.write(content)
+
+
+url_to_huge_zip = 'http://remote.server.com/data/library-1.3.8.zip'
+files_to_unzip = ['common/keywords.txt', 'abc.txt']
+get_file_contents_from_web_zip(url_to_huge_zip, files_to_unzip, on_content)
 ```
