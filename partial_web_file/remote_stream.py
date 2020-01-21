@@ -2,7 +2,7 @@ import io
 
 import requests
 
-from partial_web_file.file_util import get_partial_web_file
+from partial_web_file.file_util import get_partial_web_file_impl
 
 SEEK_FROM_START = 0
 SEEK_FROM_CURRENT_POSITION = 1
@@ -49,6 +49,6 @@ class RemoteStream(io.BytesIO):
 
     def read(self, n=DEFAULT_READ_CHUCK_SIZE):
         count = min(n, self._length - self._cursor)
-        data = get_partial_web_file(self._url, self._cursor, count)
+        data = get_partial_web_file_impl(self._url, self._cursor, count)
         self._cursor += len(data)
         return data

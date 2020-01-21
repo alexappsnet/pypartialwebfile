@@ -5,7 +5,7 @@ desc = 'Utilities to get the partial content of the web file or to unarchive a s
 
 setup(
     name='partial_web_file',
-    version='1.0.6',
+    version='1.0.7',
     url='https://github.com/alexappsnet/pypartialwebfile',
     license='MIT',
     author='Alex Malko',

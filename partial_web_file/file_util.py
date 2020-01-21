@@ -2,17 +2,18 @@ import logging
 import requests
 
 
-log = logging.getLogger('partial_web_file')
+LOG = logging.getLogger("PARTIAL_WEB_FILE")
 
 session = requests.Session()
 
-def get_partial_web_file(url, start_position, length):
+
+def get_partial_web_file_impl(url, start_position, length):
     headers = {"Range": "bytes=%d-%d" % (start_position, start_position + length - 1)}
     r = session.get(url, headers=headers)
     data = r.content
     data_len = len(data)
     if data_len != length:
-        log.warning(
+        LOG.warning(
             'Web returned %d while asked only for %d... Does this Web server support the "Range" header?'
             % (data_len, length)
         )
