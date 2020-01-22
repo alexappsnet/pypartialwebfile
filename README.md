@@ -26,9 +26,9 @@ Imagine there is a huge zip file on the Web server. Downloading it takes time an
 ```python
 import partial_web_file
 
-url_to_huge_zip = 'http://remote.server.com/data/library-1.3.8.zip'
-file_to_unzip = 'common/keywords.txt'
-local_destination = 'keywords.txt'
+url_to_huge_zip = 'https://alexapps.net/files/huge.zip'
+file_to_unzip = 'a/1.txt'
+local_destination = '1.txt'
 
 content = partial_web_file.get_file_content_from_web_zip(url_to_huge_zip, file_to_unzip)
 with open(local_destination, 'w') as fout:
@@ -51,7 +51,7 @@ def on_content(path, content):
         fout.write(content)
 
 
-url_to_huge_zip = 'http://remote.server.com/data/library-1.3.8.zip'
-files_to_unzip = ['common/keywords.txt', 'abc.txt']
+url_to_huge_zip = 'https://alexapps.net/files/huge.zip'
+files_to_unzip = ['a/1.txt', 'b/2.txt']
 get_file_contents_from_web_zip(url_to_huge_zip, files_to_unzip, on_content)
 ```
