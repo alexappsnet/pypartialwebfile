@@ -1,5 +1,6 @@
 import logging
 import requests
+from functools import lru_cache
 
 
 LOG = logging.getLogger("PARTIAL_WEB_FILE")
@@ -7,6 +8,7 @@ LOG = logging.getLogger("PARTIAL_WEB_FILE")
 session = requests.Session()
 
 
+@lru_cache(maxsize=30)
 def get_partial_web_file_impl(url, start_position, length):
     headers = {"Range": "bytes=%d-%d" % (start_position, start_position + length - 1)}
     r = session.get(url, headers=headers)
